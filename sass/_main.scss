@@ -1,104 +1,172 @@
 @use 'variables';
 
-main{
+main {
     display: flex;
     flex-direction: column-reverse;
-    @media (min-width: 768px){
-            & h2{
-                font-size: 2.625em;
-            }
-            & p{
-                width: 600px;
-                font-size: 1.125em;
-                margin: 40px auto;
-            }
-            & button{
-                width: 163px;
-                margin-bottom: 46px;
-                height: 56px;
-                font-size: 1.125em;
-            }
-            & picture{
-                width: 80%;
-                margin: 24px auto}
-        }
-    }
-    @media (min-width: 1024px){
-        main{
-            flex-direction: row;
-            margin: 0 180px 20px 165px;
-            justify-content: space-between;
-            & picture{
-                width: 400px;
-                margin: 0;
-            }
-            & h2{
-                text-align: left;
-                font-size: 4.5em;
-                width: 549px;
-                margin: 100px o 48px;
-            }
-            & p{
-                text-align: left;
-                font-size: 1.125em;
-                width: 445px;
-                font-weight: 500;
-                margin: 0 0 25px;
-            }
-            & button{
-                margin: 0 0 116px;
-            }
-        }
-    }    
-    & .hero-img{
+
+    // Hero image
+    .hero-img {
         width: 100%;
         margin-bottom: 48px;
-        /* display: none; */
+        animation: fadeIn 0.6s ease 0.2s both;
     }
-    & h2{
+
+    // Content section
+    section {
+        padding: 0 16px;
+    }
+
+    h1 {
         text-align: center;
         font-size: 2.25em;
         margin-bottom: 16px;
+        line-height: 1.1;
+        animation: fadeInUp 0.6s ease 0.3s both;
     }
-    & p{
+
+    p {
         text-align: center;
-        line-height: 26px;
+        line-height: 1.6;
         color: variables.$Medium-Gray;
-        margin: 0 16px 24px;
+        margin-bottom: 24px;
         font-size: 0.89em;
+        animation: fadeInUp 0.6s ease 0.4s both;
     }
-    & button{
+
+    button {
         background-color: variables.$Almost-Black;
         color: variables.$Almost-White;
         width: 136px;
         height: 48px;
         border-radius: 15px;
         display: block;
-        margin: 0 auto;
-        margin-bottom: 52px;
-        &:hover{
-             background-color: variables.$Almost-White;
-             color: variables.$Almost-Black;
-             border: 1px solid variables.$Almost-Black;
+        margin: 0 auto 52px;
+        transition: all 0.3s ease;
+        animation: fadeInUp 0.6s ease 0.5s both;
+
+        &:hover {
+            background-color: variables.$Almost-White;
+            color: variables.$Almost-Black;
+            border: 1px solid variables.$Almost-Black;
         }
     }
-    & .logos{
+
+    // Client logos
+    .logos {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        padding: 0 16px;
-        margin-bottom: 96px;
+        margin-bottom: 48px;
+        animation: fadeInUp 0.6s ease 0.6s both;
+
+        img {
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            opacity: 0.7;
+
+            &:hover {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+        }
     }
-    & .databiz{
+
+    .databiz {
         width: 81px;
     }
-    & .audiophile{
+
+    .audiophile {
         width: 52px;
     }
-    & .meet{
+
+    .meet {
         width: 64px;
     }
-    & .maker{
+
+    .maker {
         width: 59px;
     }
+
+    // Tablet
+    @media (min-width: 768px) {
+        h1 {
+            font-size: 2.625em;
+        }
+
+        p {
+            max-width: 600px;
+            font-size: 1.125em;
+            margin: 0 auto 40px;
+        }
+
+        button {
+            width: 163px;
+            height: 56px;
+            font-size: 1.125em;
+            margin-bottom: 46px;
+        }
+
+        picture {
+            width: 80%;
+            margin: 0 auto 24px;
+        }
+
+        .hero-img {
+            margin-bottom: 24px;
+        }
+    }
+
+    // Desktop
+    @media (min-width: 1024px) {
+        flex-direction: row;
+        margin: 0 80px 20px;
+        justify-content: space-between;
+        align-items: flex-end;
+        gap: 48px;
+
+        section {
+            padding: 0;
+            max-width: 540px;
+        }
+
+        picture {
+            width: 100%;
+            max-width: 480px;
+            margin: 0;
+        }
+
+        .hero-img {
+            margin-bottom: 0;
+        }
+
+        h1 {
+            text-align: left;
+            font-size: 4.5em;
+            margin: 0 0 48px;
+        }
+
+        p {
+            text-align: left;
+            font-size: 1.125em;
+            max-width: 445px;
+            font-weight: 500;
+            margin: 0 0 48px;
+        }
+
+        button {
+            margin: 0 0 100px;
+        }
+
+        .logos {
+            margin-bottom: 0;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        margin: 0 165px 20px;
+
+        section {
+            max-width: 540px;
+        }
+    }
+}
 
