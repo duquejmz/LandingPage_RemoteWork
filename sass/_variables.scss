@@ -1,10 +1,20 @@
-@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@500;700&family=Poppins:wght@300&display=swap');
+// ================================
+// Variables del proyecto
+// ================================
 
+// Fuentes
+@import url('https://fonts.googleapis.com/css2?family=Epilogue:wght@500;700&display=swap');
+$font-primary: 'Epilogue', sans-serif;
 
+// Colores
 $Almost-White: hsl(0, 0%, 98%);
 $Medium-Gray: hsl(0, 0%, 41%);
 $Almost-Black: hsl(0, 0%, 8%);
-$Font: 'Epilogue', sans-serif;
 
-.attribution { font-size: 11px; text-align: center; }
-.attribution a { color: hsl(228, 45%, 44%); } 
+// Breakpoints
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+$breakpoint-large: 1200px;
+
+// Transiciones
+$transition-default: 0.3s ease; 
