@@ -1,7 +1,14 @@
-@use 'initial';
+// ================================
+// Archivo principal de estilos
+// ================================
+
+// Configuración y utilidades
 @use 'variables';
-@use 'header';
-@use 'main';
 @use 'mixins';
 
+// Estilos base y reset
+@use 'initial';
 
+// Componentes
+@use 'header';
+@use 'main';
