@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Make remote work - Get your team in sync, no matter your location">
   <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
   <title>Frontend Mentor | Intro section with dropdown navigation</title>
   <link rel="stylesheet" href="./sass/style.css">
@@ -10,49 +11,69 @@
 <body>
   
   <header>
-    <img class="logo" src="./images/logo.svg" alt="logo">
-    <img id="menu" class="menu" src="./images/icon-menu.svg" alt="menu">
-    <nav id="navbar">
-      <div class="back"></div>
+    <a href="/" aria-label="Home">
+      <img class="logo" src="./images/logo.svg" alt="Snap logo">
+    </a>
+    <button id="menu" class="menu" aria-label="Open menu" aria-expanded="false" aria-controls="navbar">
+      <img src="./images/icon-menu.svg" alt="">
+    </button>
+    <nav id="navbar" aria-label="Main navigation">
+      <div class="back" aria-hidden="true"></div>
       <div class="front">
           <div class="close-img">
-            <img id="close-btn" src="./images/icon-close-menu.svg" alt="close">
+            <button id="close-btn" aria-label="Close menu">
+              <img src="./images/icon-close-menu.svg" alt="">
+            </button>
           </div>
-          <ul>
-            <li>
-              <button class="submenu-btn">Features<img src="./images/icon-arrow-down.svg" alt="flecha abajo"></button> 
-              <ul class="features-ul">
-                <li> 
-                  <img src="./images/icon-todo.svg" alt="todo">
-                  <span>To do List</span>
+          <ul role="menubar">
+            <li role="none">
+              <button class="submenu-btn" aria-expanded="false" aria-controls="features-menu">
+                Features
+                <img src="./images/icon-arrow-down.svg" alt="" aria-hidden="true">
+              </button> 
+              <ul id="features-menu" class="features-ul" role="menu" aria-label="Features submenu">
+                <li role="menuitem">
+                  <a href="#">
+                    <img src="./images/icon-todo.svg" alt="">
+                    <span>Todo List</span>
+                  </a>
                 </li>
-                <li>
-                  <img src="./images/icon-calendar.svg" alt="calendar">
-                  <span>Calendar</span>
+                <li role="menuitem">
+                  <a href="#">
+                    <img src="./images/icon-calendar.svg" alt="">
+                    <span>Calendar</span>
+                  </a>
                 </li>
-                <li>
-                  <img src="./images/icon-reminders.svg" alt="reminders">
-                  <span>Reminders</span>
+                <li role="menuitem">
+                  <a href="#">
+                    <img src="./images/icon-reminders.svg" alt="">
+                    <span>Reminders</span>
+                  </a>
                 </li>
-                <li>
-                  <img src="./images/icon-planning.svg" alt="planning">
-                  <span>Planning</span>
+                <li role="menuitem">
+                  <a href="#">
+                    <img src="./images/icon-planning.svg" alt="">
+                    <span>Planning</span>
+                  </a>
                 </li>
               </ul>
             </li>
-            <li>
-              <button class="submenu-btn">Company<img src="./images/icon-arrow-down.svg" alt="flecha abajo"></button> 
-              <ul class="company-ul">
-                <li>History</li>
-                <li>Our Team</li>
-                <li>Blog</li>
+            <li role="none">
+              <button class="submenu-btn" aria-expanded="false" aria-controls="company-menu">
+                Company
+                <img src="./images/icon-arrow-down.svg" alt="" aria-hidden="true">
+              </button> 
+              <ul id="company-menu" class="company-ul" role="menu" aria-label="Company submenu">
+                <li role="menuitem"><a href="#">History</a></li>
+                <li role="menuitem"><a href="#">Our Team</a></li>
+                <li role="menuitem"><a href="#">Blog</a></li>
               </ul>
             </li>
-            <li>Careers</li>
-            <li>About</li>
+            <li role="none"><a href="#" role="menuitem">Careers</a></li>
+            <li role="none"><a href="#" role="menuitem">About</a></li>
           </ul>
           <div class="btns-container">
-            <button  class="login-btn">Login</button>
+            <button class="login-btn">Login</button>
             <button class="register-btn">Register</button>
           </div>
       </div>
@@ -61,29 +82,27 @@
 
   <main class="main">
     <section>
-      <h2>Make remote work</h2>
+      <h1>Make remote work</h1>
       <p>Get your team in sync, no matter your location. Streamline processes, create team rituals, and watch productivity soar.</p>
-      <button>Learn more</button>
+      <button type="button">Learn more</button>
       <div class="logos">
-        <img class="databiz" src="./images/client-databiz.svg" alt="databiz">
-        <img class="audiophile" src="./images/client-audiophile.svg" alt="audiophile">
-        <img class="meet" src="./images/client-meet.svg" alt="meet">
-        <img class="maker" src="./images/client-maker.svg" alt="maker">
+        <img class="databiz" src="./images/client-databiz.svg" alt="Databiz">
+        <img class="audiophile" src="./images/client-audiophile.svg" alt="Audiophile">
+        <img class="meet" src="./images/client-meet.svg" alt="Meet">
+        <img class="maker" src="./images/client-maker.svg" alt="Maker">
       </div>
     </section>
     <picture>
-      <source srcset="./images/image-hero-mobile.png" media="(max-width: 639px)">
-      <source srcset="./images/image-hero-desktop.png" media="(min-width: 640px)">
-      <img class="hero-img" src="./images/image-hero-mobile.png" alt="hero">
+      <source srcset="./images/image-hero-desktop.png" media="(min-width: 1024px)">
+      <img class="hero-img" src="./images/image-hero-mobile.png" alt="Person working remotely on a laptop" loading="eager">
     </picture>
   </main>
 
-  <script src="./main.js"></script>
-
-   <!--<div class="attribution">
-    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+  <footer class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" rel="noopener noreferrer">Frontend Mentor</a>. 
     Coded by <a href="#">Camila Duque</a>.
-  </div> -->
+  </footer>
 
+  <script src="./main.js"></script>
 </body>
 </html>
