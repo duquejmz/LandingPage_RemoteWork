@@ -1,33 +1,96 @@
-@import url("https://fonts.googleapis.com/css2?family=Epilogue:wght@500;700&family=Poppins:wght@300&display=swap");
-.attribution {
-  font-size: 11px;
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Epilogue:wght@500;700&display=swap");
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.attribution a {
-  color: hsl(228, 45%, 44%);
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+html {
+  font-size: 16px;
 }
 
 body {
   font-family: "Epilogue", sans-serif;
   background-color: hsl(0, 0%, 98%);
   color: hsl(0, 0%, 8%);
-  font-size: 1.125em;
+  font-size: 1rem;
+  line-height: 1.5;
+  min-height: 100vh;
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+:focus-visible {
+  outline: 2px solid hsl(0, 0%, 8%);
+  outline-offset: 2px;
+}
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid hsl(0, 0%, 8%);
+  outline-offset: 2px;
+  border-radius: 4px;
 }
 
 button {
-  background-color: hsl(0, 0%, 98%);
+  background-color: transparent;
   border: none;
   cursor: pointer;
   color: hsl(0, 0%, 41%);
-  font-size: 1em;
+  font-size: 1rem;
   font-family: "Epilogue", sans-serif;
+  transition: color 0.3s ease;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+.attribution {
+  font-size: 0.6875rem;
+  text-align: center;
+  padding: 16px;
+  animation: fadeIn 0.6s ease 0.8s both;
+}
+.attribution a {
+  color: hsl(228, 45%, 44%);
+}
+.attribution a:hover {
+  text-decoration: underline;
 }
 
 header {
@@ -35,101 +98,69 @@ header {
   align-items: center;
   justify-content: space-between;
   margin: 16px 16px 24px;
+  animation: fadeIn 0.4s ease;
 }
-@media (min-width: 768px) {
-  header header .menu {
-    display: none;
-  }
-  header header .nav {
-    display: block;
-    margin-left: 24px;
-    width: 100%;
-    height: 100%;
-  }
-  header header .nav .back {
-    display: none;
-  }
-  header header .nav .front {
-    position: static;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    padding: 0;
-    justify-content: space-between;
-    align-items: center;
-  }
-  header header .nav .close-img {
-    display: none;
-  }
-  header header .nav .ul {
-    display: flex;
-    align-items: center;
-    width: 378px;
-    justify-content: space-between;
-  }
-  header header .nav .li {
-    margin: 0;
-  }
-  header header .nav .submenu-btn {
-    margin: 0;
-  }
-  header header .nav .btns-container {
-    display: flex;
-    justify-content: space-between;
-    position: static;
-    width: 182px;
-  }
-  header header .nav .login-btn {
-    margin: 0;
-  }
-  header header .nav .register-btn {
-    width: 104px;
-  }
+header .logo {
+  cursor: pointer;
+  transition: opacity 0.3s ease;
 }
-header menu {
-  display: none;
+header .logo:hover {
+  opacity: 0.7;
+}
+header .menu {
   cursor: pointer;
 }
-header menu nav {
+header nav {
   display: none;
   color: hsl(0, 0%, 41%);
 }
-header menu nav .back {
+header nav.open {
+  display: block;
+  animation: fadeIn 0.3s ease;
+}
+header nav.open .front {
+  animation: slideIn 0.3s ease;
+}
+header nav .back {
   background-color: hsl(0, 0%, 41%);
-  position: absolute;
+  position: fixed;
   left: 0;
   top: 0;
   width: 100%;
-  height: 780px;
-  opacity: 0.75;
+  height: 100vh;
+  height: 100dvh;
+  opacity: 0;
+  z-index: 10;
+  animation: fadeIn 0.3s ease forwards;
 }
-header menu nav .front {
+header nav .front {
   background-color: hsl(0, 0%, 98%);
   width: 240px;
-  position: absolute;
+  position: fixed;
   right: 0;
   top: 0;
-  height: 780px;
+  height: 100vh;
+  height: 100dvh;
   padding: 20px;
+  z-index: 11;
+  transform: translateX(100%);
+  animation: slideIn 0.3s ease forwards;
 }
-header menu nav .close-img {
+header nav .close-img {
   text-align: right;
   cursor: pointer;
 }
-header menu nav li {
+header nav ul {
   list-style: none;
+}
+header nav li {
   cursor: pointer;
-  margin-bottom: 26px;
+  margin-bottom: 16px;
 }
-header menu nav .features-ul {
-  margin-left: 28px;
-  display: none;
+header nav li:hover {
+  color: hsl(0, 0%, 8%);
 }
-header menu nav .company-ul {
-  margin-left: 28px;
-  display: none;
-}
-header menu nav .submenu-btn {
+header nav .submenu-btn {
   width: 110px;
   height: 26px;
   display: flex;
@@ -137,21 +168,136 @@ header menu nav .submenu-btn {
   align-items: center;
   margin: 24px 0;
 }
-header menu nav .btns-container {
-  position: absolute;
-  bottom: 124px;
+header nav .submenu-btn img {
+  transition: transform 0.3s ease;
 }
-header menu nav .login-btn {
-  margin: 0 auto 16px;
+header nav .submenu-btn.active img {
+  transform: rotate(180deg);
+}
+header nav .submenu-btn:hover {
+  color: hsl(0, 0%, 8%);
+}
+header nav .features-ul,
+header nav .company-ul {
+  margin-left: 24px;
+  display: none;
+}
+header nav .features-ul.show,
+header nav .company-ul.show {
   display: block;
 }
-header menu nav .register-btn {
-  border: 1px solid hsl(0, 0%, 8%);
-  width: 195px;
+header nav .features-ul li,
+header nav .company-ul li {
+  margin-bottom: 12px;
+}
+header nav .features-ul a,
+header nav .company-ul a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+header nav .btns-container {
+  margin-top: 32px;
+  text-align: center;
+}
+header nav .login-btn {
+  margin-bottom: 16px;
+  display: block;
+  width: 100%;
+}
+header nav .login-btn:hover {
+  color: hsl(0, 0%, 8%);
+}
+header nav .register-btn {
+  border: 1px solid hsl(0, 0%, 41%);
+  width: 100%;
   height: 42px;
   border-radius: 14px;
 }
-
+header nav .register-btn:hover {
+  border-color: hsl(0, 0%, 8%);
+  color: hsl(0, 0%, 8%);
+}
+@media (min-width: 768px) {
+  header .menu {
+    display: none;
+  }
+  header nav {
+    display: flex;
+    margin-left: 24px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+  }
+  header nav .back {
+    display: none;
+  }
+  header nav .front {
+    position: static;
+    width: 100%;
+    height: auto;
+    display: flex;
+    padding: 0;
+    justify-content: space-between;
+    align-items: center;
+    background-color: transparent;
+  }
+  header nav .close-img {
+    display: none;
+  }
+  header nav > .front > ul {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+  header nav li {
+    margin: 0;
+    position: relative;
+  }
+  header nav .submenu-btn {
+    margin: 0;
+    gap: 8px;
+    width: auto;
+  }
+  header nav .features-ul,
+  header nav .company-ul {
+    position: absolute;
+    top: 100%;
+    background-color: hsl(0, 0%, 98%);
+    padding: 16px 24px;
+    border-radius: 10px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    margin: 16px 0 0 0;
+    min-width: 150px;
+  }
+  header nav .features-ul li,
+  header nav .company-ul li {
+    margin-bottom: 12px;
+    white-space: nowrap;
+  }
+  header nav .features-ul li:last-child,
+  header nav .company-ul li:last-child {
+    margin-bottom: 0;
+  }
+  header nav .features-ul {
+    right: 0;
+  }
+  header nav .company-ul {
+    left: 0;
+  }
+  header nav .btns-container {
+    display: flex;
+    gap: 16px;
+    margin: 0;
+  }
+  header nav .login-btn {
+    margin: 0;
+    width: auto;
+  }
+  header nav .register-btn {
+    width: 104px;
+  }
+}
 @media (min-width: 1024px) {
   header {
     margin: 21px 80px 67px;
@@ -160,6 +306,7 @@ header menu nav .register-btn {
     margin-left: 48px;
   }
 }
+
 main {
   display: flex;
   flex-direction: column-reverse;
@@ -167,19 +314,25 @@ main {
 main .hero-img {
   width: 100%;
   margin-bottom: 48px;
-  /* display: none; */
+  animation: fadeIn 0.6s ease 0.2s both;
 }
-main h2 {
+main section {
+  padding: 0 16px;
+}
+main h1 {
   text-align: center;
   font-size: 2.25em;
   margin-bottom: 16px;
+  line-height: 1.1;
+  animation: fadeInUp 0.6s ease 0.3s both;
 }
 main p {
   text-align: center;
-  line-height: 26px;
+  line-height: 1.6;
   color: hsl(0, 0%, 41%);
-  margin: 0 16px 24px;
+  margin-bottom: 24px;
   font-size: 0.89em;
+  animation: fadeInUp 0.6s ease 0.4s both;
 }
 main button {
   background-color: hsl(0, 0%, 8%);
@@ -188,8 +341,9 @@ main button {
   height: 48px;
   border-radius: 15px;
   display: block;
-  margin: 0 auto;
-  margin-bottom: 52px;
+  margin: 0 auto 52px;
+  transition: all 0.3s ease;
+  animation: fadeInUp 0.6s ease 0.5s both;
 }
 main button:hover {
   background-color: hsl(0, 0%, 98%);
@@ -200,8 +354,16 @@ main .logos {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 16px;
-  margin-bottom: 96px;
+  margin-bottom: 48px;
+  animation: fadeInUp 0.6s ease 0.6s both;
+}
+main .logos img {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  opacity: 0.7;
+}
+main .logos img:hover {
+  transform: scale(1.1);
+  opacity: 1;
 }
 main .databiz {
   width: 81px;
@@ -215,51 +377,75 @@ main .meet {
 main .maker {
   width: 59px;
 }
-
 @media (min-width: 768px) {
-  main h2 {
+  main h1 {
     font-size: 2.625em;
   }
   main p {
-    width: 600px;
+    max-width: 600px;
     font-size: 1.125em;
-    margin: 40px auto;
+    margin: 0 auto 40px;
   }
   main button {
     width: 163px;
-    margin-bottom: 46px;
     height: 56px;
     font-size: 1.125em;
+    margin-bottom: 46px;
   }
   main picture {
     width: 80%;
-    margin: 24px auto;
+    margin: 0 auto 24px;
+  }
+  main .hero-img {
+    margin-bottom: 24px;
   }
 }
 @media (min-width: 1024px) {
   main {
     flex-direction: row;
-    margin: 0 180px 20px 165px;
+    margin: 0 80px 20px;
     justify-content: space-between;
+    align-items: flex-end;
+    gap: 48px;
+  }
+  main section {
+    padding: 0;
+    max-width: 540px;
   }
   main picture {
-    width: 400px;
+    width: 100%;
+    max-width: 480px;
     margin: 0;
   }
-  main h2 {
+  main .hero-img {
+    margin-bottom: 0;
+  }
+  main h1 {
     text-align: left;
     font-size: 4.5em;
-    width: 549px;
-    margin: 100px o 48px;
+    margin: 0 0 48px;
   }
   main p {
     text-align: left;
     font-size: 1.125em;
-    width: 445px;
+    max-width: 445px;
     font-weight: 500;
-    margin: 0 0 25px;
+    margin: 0 0 48px;
   }
   main button {
-    margin: 0 0 116px;
+    margin: 0 0 100px;
   }
-}/*# sourceMappingURL=style.css.map */
+  main .logos {
+    margin-bottom: 0;
+  }
+}
+@media (min-width: 1200px) {
+  main {
+    margin: 0 165px 20px;
+  }
+  main section {
+    max-width: 540px;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
