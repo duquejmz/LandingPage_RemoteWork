@@ -1,3 +1,63 @@
-@mixin features-ul{
-    margin-left: 28px;
+@use 'variables';
+
+// ================================
+// Mixins reutilizables
+// ================================
+
+// Flexbox helpers
+@mixin flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+// Media query helpers
+@mixin tablet {
+    @media (min-width: variables.$breakpoint-tablet) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: variables.$breakpoint-desktop) {
+        @content;
+    }
+}
+
+@mixin large {
+    @media (min-width: variables.$breakpoint-large) {
+        @content;
+    }
+}
+
+// Button styles
+@mixin button-primary {
+    background-color: variables.$Almost-Black;
+    color: variables.$Almost-White;
+    border-radius: 15px;
+    transition: all variables.$transition-default;
+
+    &:hover {
+        background-color: variables.$Almost-White;
+        color: variables.$Almost-Black;
+        border: 1px solid variables.$Almost-Black;
+    }
+}
+
+@mixin button-outline {
+    background-color: transparent;
+    border: 1px solid variables.$Medium-Gray;
+    border-radius: 14px;
+    transition: all variables.$transition-default;
+
+    &:hover {
+        border-color: variables.$Almost-Black;
+        color: variables.$Almost-Black;
+    }
 }
